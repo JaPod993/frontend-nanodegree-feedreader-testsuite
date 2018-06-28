@@ -92,15 +92,34 @@ $(function() {
            loadFeed(0,done);
         });
 
-        it("has at least one feed element", function () {
+        it('has at least one feed element', function () {
             expect($('.feed, .entry').length).toBeGreaterThan(0);
         });
+    });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+        let contentFirst,
+            contentSecond,
+            feed = $('.feed');
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        beforeEach(function (done) {
+            feed.empty();
+            loadFeed(0, function () {
+                contentFirst = feed.html();
+                loadFeed(1, done);
+            });
+        });
+        /*
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('ensures that contect is changing', function () {
+            contentSecond = feed.html();
+            expect(contentFirst).not.toBe(contentSecond);
+        });
+
+        afterAll(function (done) {
+           loadFeed(0, done);
+        });
     });
 }());
