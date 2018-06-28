@@ -80,8 +80,7 @@ $(function() {
         });
     });
     describe('Initial Entries', function() {
-        const body = document.body,
-            menuIconLink = $('.menu-icon-link');
+        
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
