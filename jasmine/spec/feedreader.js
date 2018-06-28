@@ -55,7 +55,7 @@ $(function() {
     /* */
     describe('The menu', function() {
         const body = document.body,
-              menuIcon = $('.menu-icon-link');
+              menuIconLink = $('.menu-icon-link');
 
 
         /*
@@ -67,13 +67,21 @@ $(function() {
            expect(body.classList.contains("menu-hidden")).toBe(true);
         });
 
-         /* TODO: Write a test that ensures the menu changes
+         /*
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('is showing and hiding after click', function () {
+            menuIconLink.click();
+            expect(body.classList.contains("menu-hidden")).toBe(false);
+            menuIconLink.click();
+            expect(body.classList.contains("menu-hidden")).toBe(true);
+        });
     });
-    /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
+        const body = document.body,
+            menuIconLink = $('.menu-icon-link');
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -88,4 +96,5 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 }());
